@@ -4,12 +4,28 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      List
+      Metodo Bolha
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+  <ion-content>
+    <div>
+      <ion-list>
+        <ion-item>
+          <ion-input type="number" placeholder="Valores de entrada"></ion-input>
+        </ion-item>
+        <ion-item>
+          
+          <ion-label hidden=true>Dia de Lançamento</ion-label>
+            <ion-datetime  display-format="DD/MM/YYYY" picker-format="DD MMMM YYYY"></ion-datetime>
+        </ion-item>
+      </ion-list> 
+    </div>  
+  </ion-content>
+
+    
+<!-- <ion-content>
   <ion-list>
     <ion-item *ngFor="let item of items">
       <ion-icon [name]="item.icon" slot="start"></ion-icon>
@@ -19,9 +35,7 @@
       </div>
     </ion-item>
   </ion-list>
-  <!--
     <div *ngIf="selectedItem" padding>
       You navigated here from <b>{{selectedItem.title }}</b>
     </div>
-  -->
-</ion-content>
+</ion-content> -->
