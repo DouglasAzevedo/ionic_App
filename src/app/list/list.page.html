@@ -4,7 +4,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Metodo Bolha
+         Metodo Bolha
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -16,32 +16,24 @@
           <ion-input name="vetor" [(ngModel)]="vetor" type="text" (keyup)="verificaEntrada(vetor)" placeholder="Valores de entrada"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input type="text" placeholder="data do lançamento"></ion-input>
+            <ion-icon name="calendar"></ion-icon>
             <ion-datetime display-format="DD/MM/YYYY" picker-format="DD MMMM YYYY"></ion-datetime>
         </ion-item>
-          <ion-button class="btn_adicionar" color="dark" (click)="ordenarVetor(vetor)"><ion-ripple-effect></ion-ripple-effect>Adicionar</ion-button>
+          <ion-button class="btn_adicionar" color="dark" (click)="ordenarVetor(vetor)" (click)="toast()"><ion-ripple-effect></ion-ripple-effect>Adicionar</ion-button>
         </ion-list>
         <ion-item>
-          <ion-input type="text" [(ngModel)]="vetorQuebrado" placeholder="Valores ordenados..."></ion-input>
-        </ion-item> 
-        <p> {{bolha.i}}</p>
-        <p> {{bolha.t}}</p>
-        <p> {{bolha.c}}</p>
-      </div>  
+          <ion-input type="text" placeholder="Valores ordenados..."></ion-input>
+        </ion-item>
+        <ion-row>
+          <ion-col>
+              <p>I ={{bolha.i}}</p>
+          </ion-col>
+            <ion-col>
+                <p>T ={{bolha.t}}</p>
+            </ion-col>
+            <ion-col>
+                <p>C ={{bolha.c}}</p>
+            </ion-col>
+        </ion-row>
+    </div>      
   </ion-content>
-
-    
-<!-- <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.title}}
-      <div class="item-note" slot="end">
-        {{item.note}}
-      </div>
-    </ion-item>
-  </ion-list>
-    <div *ngIf="selectedItem" padding>
-      You navigated here from <b>{{selectedItem.title }}</b>
-    </div>
-</ion-content> -->
