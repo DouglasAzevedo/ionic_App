@@ -43,7 +43,17 @@ export class ListPage implements OnInit {
     return vetor;
   }
 
+<<<<<<< HEAD
+=======
+  zeraContagens() {
+    this.bolha.i = 0;
+    this.bolha.c = 0;
+    this.bolha.t = 0;
+  }
+
+>>>>>>> f97f9d1aea2f3ef36f959efe2f3b253fffc49e7d
   ordenarVetor(vetor) {
+    this.zeraContagens();
     let vetorQuebrado = vetor.trim().split((/[,;\s]+/));
     vetorQuebrado = this.parsePaNumero(vetorQuebrado);
 
