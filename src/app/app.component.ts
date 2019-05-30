@@ -19,6 +19,16 @@ export class AppComponent {
       title: 'Metodo bolha',
       url: '/list',
       icon: 'md-funnel'
+    },
+    {
+      title: 'Metodo de Seleção',
+      url: '/Selection',
+      icon: 'md-funnel'
+    },
+    {
+      title: 'Metodo de Inserção',
+      url: '/localhost:8100',
+      icon: 'md-funnel'
     }
   ];
 

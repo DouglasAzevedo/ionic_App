@@ -45,6 +45,7 @@ export class ListPage implements OnInit {
     console.log(vetor)
     return vetor;
   }
+<<<<<<< HEAD
   
   zeraContagens() {
     this.bolha.i = 0;
@@ -67,6 +68,19 @@ export class ListPage implements OnInit {
       let tamanhoB = vetorQuebrado.length - 1;
       let temp1 = 0;
       let temp2 = 0;
+=======
+
+  ordenarVetor(vetor) {
+    //this.zeraContagens();
+    let vetorQuebrado = vetor.trim().split((/[,;\s]+/));
+    vetorQuebrado = this.parsePaNumero(vetorQuebrado);
+
+    this.bolha.i = vetorQuebrado.length - 1;
+    let tamanho = vetorQuebrado.length - 1;
+    let tamanhoB = vetorQuebrado.length - 1;
+    let temp1 = 0;
+    let temp2 = 0;
+>>>>>>> 15a8216c2c54cb5eeafb68b43b0a264c44451327
 
       for (let i = 0; i < tamanho; i++) {
         for (let x = 0; x < tamanhoB; x++) {
