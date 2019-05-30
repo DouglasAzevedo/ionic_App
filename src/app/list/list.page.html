@@ -22,7 +22,8 @@
           <ion-button class="btn_adicionar" color="dark" (click)="ordenarVetor(vetor)" (click)="toast()"><ion-ripple-effect></ion-ripple-effect>Adicionar</ion-button>
         </ion-list>
         <ion-item>
-          <ion-input type="text" placeholder="Valores ordenados..."></ion-input>
+          <ion-label> Vetor ordenado </ion-label>
+          <ion-input type="text" disabled [(ngModel)]="bolha.vetor" placeholder="Valores ordenados..."></ion-input>
         </ion-item>
         <ion-row>
           <ion-col>
@@ -34,6 +35,12 @@
             <ion-col>
                 <p>C ={{bolha.c}}</p>
             </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+              <p>Valores ordenados Ordenado ={{bolha.vetor}} | number:'1.0-0'</p>
+              <p>{{bolha.vetor}} | number:'1.0-0'</p>
+          </ion-col>
         </ion-row>
     </div>      
   </ion-content>

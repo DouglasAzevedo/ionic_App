@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+import { isArray } from 'util';
 
 @Component({
   selector: 'app-list',
@@ -12,7 +13,7 @@ export class ListPage implements OnInit {
 
   public vetor = [];
   public verifica = /[A-Za-z]/;
-  public bolha = { i: 0, t: 0, c: 0 };
+  public bolha = { i: 0, t: 0, c: 0, vetor:[] };
   public items: Array<{ title: string; note: string; icon: string }> = [];
 
   constructor(public alert: AlertController,public toastSucess: ToastController) {
@@ -37,46 +38,54 @@ export class ListPage implements OnInit {
     toast.present();
   } 
   parsePaNumero(vetor) {
+    console.log(vetor)
     for(let i = 0; i < vetor.length; i++) {
-      vetor[i] = parseInt(vetor[i]);
+      vetor[i] = parseFloat(vetor[i]);
     }
+    console.log(vetor)
     return vetor;
   }
-
-<<<<<<< HEAD
-=======
+  
   zeraContagens() {
     this.bolha.i = 0;
     this.bolha.c = 0;
     this.bolha.t = 0;
+    if(isArray(this.bolha.vetor)) {
+      this.bolha.vetor.slice();
+    }
   }
 
->>>>>>> f97f9d1aea2f3ef36f959efe2f3b253fffc49e7d
   ordenarVetor(vetor) {
     this.zeraContagens();
-    let vetorQuebrado = vetor.trim().split((/[,;\s]+/));
-    vetorQuebrado = this.parsePaNumero(vetorQuebrado);
+    let vetorQuebrado;
+    console.log(vetor);
+    if(vetor[0] || vetor.length > 0){
+      let vetorQuebrado = vetor.trim().split((/[,;\s]+/));
+      vetorQuebrado = this.parsePaNumero(vetorQuebrado);
+      this.bolha.i = vetorQuebrado.length - 1;
+      let tamanho = vetorQuebrado.length - 1;
+      let tamanhoB = vetorQuebrado.length - 1;
+      let temp1 = 0;
+      let temp2 = 0;
 
-    this.bolha.i = vetorQuebrado.length - 1;
-    let tamanho = vetorQuebrado.length - 1;
-    let tamanhoB = vetorQuebrado.length - 1;
-    let temp1 = 0;
-    let temp2 = 0;
-
-    for (let i = 0; i < tamanho; i++) {
-      for (let x = 0; x < tamanhoB; x++) {
-        if (vetorQuebrado[x] > vetorQuebrado[x + 1]) {
-          temp1 = vetorQuebrado[x];
-          temp2 = vetorQuebrado[x + 1];
-          vetorQuebrado[x] = temp2;
-          vetorQuebrado[x + 1] = temp1;
-          this.bolha.c++;
-          this.bolha.t++;
-        } else {
-          this.bolha.c++;
+      for (let i = 0; i < tamanho; i++) {
+        for (let x = 0; x < tamanhoB; x++) {
+          if (vetorQuebrado[x] > vetorQuebrado[x + 1]) {
+            temp1 = vetorQuebrado[x];
+            temp2 = vetorQuebrado[x + 1];
+            vetorQuebrado[x] = temp2;
+            vetorQuebrado[x + 1] = temp1;
+            this.bolha.c++;
+            this.bolha.t++;
+          } else {
+            this.bolha.c++;
+          }
         }
+        tamanhoB--;
       }
-      tamanhoB--;
+      this.bolha.vetor = vetorQuebrado;
+    } else {
+      return;
     }
   }
 
