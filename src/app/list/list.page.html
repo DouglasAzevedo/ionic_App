@@ -4,36 +4,38 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-         Metodo Bolha
+        Controle de Dados
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
   <ion-content>
-    <div class="corpo">
-      <ion-list>
-        <ion-item>
-          <ion-input name="vetor" [(ngModel)]="vetor" type="text" (keyup)="verificaEntrada(vetor)" placeholder="Valores de entrada"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-icon name="calendar"></ion-icon>
-            <ion-datetime display-format="DD/MM/YYYY" picker-format="DD MMMM YYYY"></ion-datetime>
-        </ion-item>
-          <ion-button class="btn_adicionar" color="dark" (click)="ordenarVetor(vetor)" (click)="toast()"><ion-ripple-effect></ion-ripple-effect>Adicionar</ion-button>
-        </ion-list>
-        <ion-item>
-          <ion-input type="text" placeholder="Valores ordenados..."></ion-input>
-        </ion-item>
-        <ion-row>
-          <ion-col>
-              <p>I ={{bolha.i}}</p>
-          </ion-col>
+    <ion-card>
+      <div class="corpo">
+        <ion-list>
+          <ion-item>
+            <ion-input name="vetor" [(ngModel)]="vetor" type="text" (keyup)="verificaEntrada(vetor)" placeholder="Valores de entrada"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-icon name="calendar"></ion-icon>
+              <ion-datetime display-format="DD/MM/YYYY" picker-format="DD MMMM YYYY"></ion-datetime>
+          </ion-item>
+            <ion-button class="btn_adicionar" color="dark" (click)="ordenarVetor(vetor)" (click)="toast()"><ion-ripple-effect></ion-ripple-effect>Adicionar</ion-button>
+          </ion-list>
+          <ion-item>
+            <ion-input type="text" placeholder="Valores ordenados..."></ion-input>
+          </ion-item>
+          <ion-row>
             <ion-col>
-                <p>T ={{bolha.t}}</p>
+                <p>I ={{bolha.i}}</p>
             </ion-col>
-            <ion-col>
-                <p>C ={{bolha.c}}</p>
-            </ion-col>
-        </ion-row>
-    </div>      
+              <ion-col>
+                  <p>T ={{bolha.t}}</p>
+              </ion-col>
+              <ion-col>
+                  <p>C ={{bolha.c}}</p>
+              </ion-col>
+          </ion-row>
+      </div>
+    </ion-card>      
   </ion-content>
