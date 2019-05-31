@@ -13,6 +13,7 @@ export class ListPage implements OnInit {
   public vetor = [];
   public verifica = /[A-Za-z]/;
   public bolha = { i: 0, t: 0, c: 0 };
+  public result;
   public items: Array<{ title: string; note: string; icon: string }> = [];
 
   constructor(public alert: AlertController,public toastSucess: ToastController) {
@@ -47,7 +48,7 @@ export class ListPage implements OnInit {
     //this.zeraContagens();
     let vetorQuebrado = vetor.trim().split((/[,;\s]+/));
     vetorQuebrado = this.parsePaNumero(vetorQuebrado);
-
+  
     this.bolha.i = vetorQuebrado.length - 1;
     let tamanho = vetorQuebrado.length - 1;
     let tamanhoB = vetorQuebrado.length - 1;
@@ -69,7 +70,10 @@ export class ListPage implements OnInit {
       }
       tamanhoB--;
     }
+    this.result = vetorQuebrado;
   }
+
+  //salvaDados(){}
 
   ngOnInit() {}
   // add back when alpha.4 is out
