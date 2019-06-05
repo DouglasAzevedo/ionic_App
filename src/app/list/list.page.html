@@ -14,13 +14,14 @@
       <div class="corpo">
         <ion-list>
           <ion-item>
-            <ion-input name="vetor" [(ngModel)]="vetor" type="text" (keyup)="verificaEntrada(vetor)" placeholder="Valores de entrada"></ion-input>
+            <ion-input name="vetor" [(ngModel)]="vetor" type="text" (keydown)="verificaEntrada(vetor)" placeholder="Valores de entrada"></ion-input>
           </ion-item>
           <ion-item>
               <ion-icon center name="calendar"></ion-icon>
               <ion-datetime display-format="DD/MM/YYYY" picker-format="DD MMMM YYYY"></ion-datetime>
           </ion-item>
-            <ion-button class="btn_adicionar" color="dark" (click)="ordenarVetor(vetor)" (click)="toast()"><ion-ripple-effect></ion-ripple-effect>Adicionar</ion-button>
+            <!-- <ion-button class="btn_adicionar" color="dark" (click)="ordenarVetor(vetor)" (click)="toast()"><ion-ripple-effect></ion-ripple-effect>Adicionar</ion-button> -->
+            <ion-button class="btn_adicionar" color="dark" (click)="insertionSort(vetor)" (click)="toast()"><ion-ripple-effect></ion-ripple-effect>Adicionar</ion-button>
           </ion-list>
           <ion-item>
             <ion-input type="text" disabled ion-text-center>{{bolha.vetor}}</ion-input>
@@ -31,7 +32,7 @@
                 <p>I ={{bolha.i}}</p>
             </ion-col>
               <ion-col>
-                  <p>I ={{bolha.i}}</p>
+                  <p>T ={{bolha.t}}</p>
               </ion-col>
               <ion-col>
                   <p>C ={{bolha.c}}</p>
