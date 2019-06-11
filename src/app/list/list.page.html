@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="tertiary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -10,7 +10,7 @@
 </ion-header>
 
   <ion-content>
-    <ion-card>  
+    <ion-card color="medium">  
       <div class="corpo">
         <ion-list>
           <ion-item>
@@ -20,22 +20,21 @@
               <ion-icon center name="calendar"></ion-icon>
               <ion-datetime display-format="DD/MM/YYYY" picker-format="DD MMMM YYYY"></ion-datetime>
           </ion-item>
-            <!-- <ion-button class="btn_adicionar" color="dark" (click)="ordenarVetor(vetor)" (click)="toast()"><ion-ripple-effect></ion-ripple-effect>Adicionar</ion-button> -->
-            <ion-button class="btn_adicionar" color="dark" (click)="insertionSort(vetor)" (click)="toast()"><ion-ripple-effect></ion-ripple-effect>Adicionar</ion-button>
+            <ion-button class="btn_adicionar" color="dark" (click)=" selectionSort(vetor)" (click)="toast()"><ion-ripple-effect></ion-ripple-effect>Adicionar</ion-button>
           </ion-list>
           <ion-item>
-            <ion-input type="text" disabled ion-text-center>{{bolha.vetor}}</ion-input>
+            <ion-input type="text" disabled ion-text-center>{{acoes.vetor}}</ion-input>
             
           </ion-item>
           <ion-row>
             <ion-col>
-                <p>I ={{bolha.i}}</p>
+                <p>I ={{acoes.i}}</p>
             </ion-col>
               <ion-col>
-                  <p>T ={{bolha.t}}</p>
+                  <p>T ={{acoes.t}}</p>
               </ion-col>
               <ion-col>
-                  <p>C ={{bolha.c}}</p>
+                  <p>C ={{acoes.c}}</p>
               </ion-col>
           </ion-row>
       </div>

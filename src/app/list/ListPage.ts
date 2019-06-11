@@ -10,15 +10,13 @@ import { isArray } from 'util';
 })
 export class ListPage implements OnInit {
 
-
   public vetor = [];
   public verifica = /[A-Za-z]/;
-  public bolha = { i: 0, t: 0, c: 0, vetor: [] };
-  public insercao = { i: 0, t: 0, c: 0, vetor: [] };
+  public acoes = { i: 0, t: 0, c: 0, vetor: [] };
   public items: Array<{ title: string; note: string; icon: string }> = [];
 
-  constructor(public alert: AlertController, public toastSucess: ToastController) {
-  }
+  constructor(public alert: AlertController, public toastSucess: ToastController) { }
+
   async verificaEntrada(vetor) {
     const alerta = await this.alert.create({
       header: 'Atenção',
@@ -50,15 +48,16 @@ export class ListPage implements OnInit {
   }
 
   zeraContagens() {
-    this.bolha.i = 0;
-    this.bolha.c = 0;
-    this.bolha.t = 0;
-    if (isArray(this.bolha.vetor)) {
-      this.bolha.vetor.slice();
+    this.acoes.i = 0;
+    this.acoes.c = 0;
+    this.acoes.t = 0;
+    if (isArray(this.acoes.vetor)) {
+      this.acoes.vetor.slice();
     }
   }
 
   quebraVetor(vetor) {
+    this.zeraContagens();
     if (vetor[0] || vetor.length > 0) {
       var vetorQuebrado = vetor.trim().split((/[,;\s]+/));
       vetorQuebrado = this.parsePaNumero(vetorQuebrado);
@@ -66,11 +65,9 @@ export class ListPage implements OnInit {
     return vetorQuebrado;
   }
 
-  ordenarVetor(vetor) {
-    this.zeraContagens();
+  bubbleSort(vetor) {
     let vetorQuebrado = this.quebraVetor(vetor);
-    console.log(vetor);
-    this.bolha.i = vetorQuebrado.length - 1;
+    this.acoes.i = vetorQuebrado.length - 1;
     let tamanho = vetorQuebrado.length - 1;
     let tamanhoB = vetorQuebrado.length - 1;
     let temp1 = 0;
@@ -83,50 +80,40 @@ export class ListPage implements OnInit {
           temp2 = vetorQuebrado[x + 1];
           vetorQuebrado[x] = temp2;
           vetorQuebrado[x + 1] = temp1;
-          this.bolha.c++;
-          this.bolha.t++;
+          this.acoes.c++;
+          this.acoes.t++;
         } else {
-          this.bolha.c++;
+          this.acoes.c++;
         }
       }
       tamanhoB--;
     }
-    this.bolha.vetor = vetorQuebrado;
+    this.acoes.vetor = vetorQuebrado;
   }
 
-  insertionSort(vetor) {
-    console.log('Entro no insertion');
+  selectionSort(vetor) {
     let vetorQuebrado = this.quebraVetor(vetor);
-    // se contar errado, é pq ta comparando 1 a +
-    const tamanho = vetorQuebrado.length;
+    this.acoes.i = vetorQuebrado.length - 1;
+    let tamanho = vetorQuebrado.length - 1;
+    let tamanhoB = vetorQuebrado.length - 1;
 
-    this.insercao.i = vetorQuebrado.length -1;
-
-    for (let i = 1; i < tamanho; i++) {
-      let temp1 = 0;
-      let temp2 = 0;
-      console.log('for i', i);
-      if (vetorQuebrado[i] < vetorQuebrado[i -1]) {
-        console.log('entro on if')
-        for (let j = i;  j != 0; j--) {
-          if (vetorQuebrado[j] > vetorQuebrado[j - 1]) {
-            temp1 = vetorQuebrado[j];       
-            temp2 = vetorQuebrado[j - 1];       
-            vetorQuebrado[j] = temp2;
-            vetorQuebrado[j - 1] = temp1;
-            this.insercao.c++
-            this.insercao.t++
-          } else {
-            return
-          }
+    for (let i = 0; i < tamanho; i++) {
+      for (let x = 0; x < tamanhoB; x++) {
+        if (vetorQuebrado[i] > vetorQuebrado[i + 1]) {
+          let temp = vetorQuebrado[i];
+          let temp1 = vetorQuebrado[i + 1];
+          vetorQuebrado[x] = temp;
+          vetorQuebrado[x + 1] = temp1;
+          this.acoes.c++;
+          this.acoes.t++;
+          i++;
+        } else {
+          i++;
         }
       }
     }
     console.log(vetorQuebrado);
   }
+
   ngOnInit() { }
-  // add back when alpha.4 is out
-  // navigate(item) {
-  //   this.router.navigate(['/list', JSON.stringify(item)]);
-  // }
 }
