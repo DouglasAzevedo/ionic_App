@@ -100,8 +100,8 @@ export class ListPage implements OnInit {
     for (let i = 0; i < tamanho; i++) {
       for (let x = 0; x < tamanhoB; x++) {
         if (vetorQuebrado[i] > vetorQuebrado[i + 1]) {
-          let temp = vetorQuebrado[i];
-          let temp1 = vetorQuebrado[i + 1];
+          let temp = vetorQuebrado[x];
+          let temp1 = vetorQuebrado[x + 1];
           vetorQuebrado[x] = temp;
           vetorQuebrado[x + 1] = temp1;
           this.acoes.c++;
