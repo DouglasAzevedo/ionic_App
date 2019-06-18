@@ -12,7 +12,7 @@ export class ListPage implements OnInit {
 
   public vetor = [];
   public verifica = /[A-Za-z]/;
-  public acoes = { i: 0, t: 0, c: 0, vetor: [] };
+  public acoes = { i: 0, t: 0, c: 0, p: 0, vetor: [] };
   public items: Array<{ title: string; note: string; icon: string }> = [];
 
   constructor(public alert: AlertController, public toastSucess: ToastController) { }
@@ -91,28 +91,61 @@ export class ListPage implements OnInit {
     this.acoes.vetor = vetorQuebrado;
   }
 
-  selectionSort(vetor) {
+  insertionSort(vetor) {
     let vetorQuebrado = this.quebraVetor(vetor);
-    this.acoes.i = vetorQuebrado.length - 1;
-    let tamanho = vetorQuebrado.length - 1;
-    let tamanhoB = vetorQuebrado.length - 1;
-
-    for (let i = 0; i < tamanho; i++) {
-      for (let x = 0; x < tamanhoB; x++) {
-        if (vetorQuebrado[i] > vetorQuebrado[i + 1]) {
-          let temp = vetorQuebrado[x];
-          let temp1 = vetorQuebrado[x + 1];
-          vetorQuebrado[x] = temp;
-          vetorQuebrado[x + 1] = temp1;
-          this.acoes.c++;
-          this.acoes.t++;
-          i++;
-        } else {
-          i++;
+    var stop = true;
+    var temp1 = 0;
+    var temp2 = 0;
+    for (let i = 1; i < vetor.length; i++) {
+      if (vetor[i - 1] > vetor[i]) {
+        stop = true;
+        if (stop) {
+          for (let x = i; 0 < x; x--) {
+            if (vetor[x - 1] > vetor[x]) {
+              temp1 = vetor[x];
+              temp2 = vetor[x - 1];
+              vetor[x] = temp2;
+              vetor[x - 1] = temp1;
+              this.acoes.t++;
+              this.acoes.c++;
+            } else {
+              stop = false;
+              this.acoes.c++;
+            }
+          }
         }
       }
     }
-    console.log(vetorQuebrado);
+    this.acoes.vetor = vetorQuebrado;
+  }
+
+  selectionSort(vetor) {
+    let vetorQuebrado = this.quebraVetor(vetor);
+    var temp1 = 0;
+    var cont = 0;
+    var aux =0;
+    this.acoes.p= -1;
+    for (let i = 0; i < vetor.length; i++) {
+      temp1 = vetor[i];
+      cont = 0;
+      var trocas = false;
+      for (let x = i + 1; x < vetor.length; x++) {
+        if (vetor[x] < temp1) {
+          temp1 = vetor[x];
+          cont = x;
+          trocas = true;
+        }
+        this.acoes.c++;
+      };
+      if (trocas) {
+        aux = vetor[i];
+        vetor[i] = vetor[cont];
+        vetor[cont] = aux;
+        this.acoes.t++;
+      }
+      this.acoes.p++;
+    }
+    this.acoes.vetor = vetorQuebrado;
   }
 
   ngOnInit() { }
