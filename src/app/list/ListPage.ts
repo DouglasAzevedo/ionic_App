@@ -123,8 +123,8 @@ export class ListPage implements OnInit {
     let vetorQuebrado = this.quebraVetor(vetor);
     var temp1 = 0;
     var cont = 0;
-    var aux =0;
-    this.acoes.p= -1;
+    var aux = 0;
+    this.acoes.p = -1;
     for (let i = 0; i < vetor.length; i++) {
       temp1 = vetor[i];
       cont = 0;
@@ -148,5 +148,36 @@ export class ListPage implements OnInit {
     this.acoes.vetor = vetorQuebrado;
   }
 
+  quickSort(vetor) {
+    let vetorQuebrado = this.quebraVetor(vetor);
+    for (let x = 0; x < vetorQuebrado.length; x++) {
+      for (let j = vetorQuebrado.length; j < 0; j--) {
+        var pivo = j[vetorQuebrado.length];
+        if(x <= pivo){
+          this.acoes.c++
+          x++;
+          if(x > pivo) {
+            this.acoes.c++
+            continue;
+          }
+        }
+        if(j > pivo){
+          j--;
+          this.acoes.c++
+          if(j <= pivo){
+            x = j;
+            j = x;
+            this.acoes.t++;
+            this.acoes.c++;
+          }
+        }
+        if(j > x){
+          x = j;
+          this.acoes.c++;
+          this.acoes.t++;
+        }
+      }
+    }
+  }
   ngOnInit() { }
 }
